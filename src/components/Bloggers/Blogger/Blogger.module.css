@@ -1,0 +1,13 @@
+.blogger{
+    display: flex;
+    justify-content: space-between;
+}
+
+.blogger p {
+    color: darkgray;
+}
+
+.blogger img{
+    height: 5%;
+    width: 5%;
+}

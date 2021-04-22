@@ -1,4 +1,4 @@
-.Header{
+.header{
     height: 56px;
     width: 100%;
     position: fixed;
@@ -13,6 +13,7 @@
     border: 1px solid #000000;
     z-index: 90;
 }
+
 
 .AddButton {
     background-color: #08c58c;

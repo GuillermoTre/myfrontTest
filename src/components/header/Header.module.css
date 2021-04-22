@@ -1,0 +1,31 @@
+.Header{
+    height: 56px;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #08c58c;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    box-sizing: border-box;
+    border: 1px solid #000000;
+    z-index: 90;
+}
+
+.AddButton {
+    background-color: #08c58c;
+    outline: none;
+    cursor: pointer;
+    border: 0px solid #000000;
+    color: #000000;
+    font-size: 1.2em;
+    padding: 15px 15px;
+}
+
+.AddButton:hover {
+    background-color: #027a2a;
+    border: 1px solid #000000;
+    color: #ffffff;
+}

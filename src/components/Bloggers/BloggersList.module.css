@@ -1,0 +1,8 @@
+.list{
+    padding-top: 50px;
+    list-style-type: none;
+}
+
+.list li{
+    padding: 15px;
+}

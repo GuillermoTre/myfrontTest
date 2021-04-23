@@ -8,7 +8,7 @@ const bloggerDetail = (props) => {
 
   if (props.id !== 0) {
     const blogger = props.bloggers.find((obj) => {
-      return obj.id == props.id;
+      return obj.id === props.id;
     });
 
     const filtered = props.bloggers.filter((item) =>

@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Bangers&family=Dancing+Script&family=Pacifico&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Bangers&family=Dancing+Script&family=Pacifico&family=Roboto:ital,wght@1,900&display=swap');
+
 
 .Menu{
     height: 56px;
@@ -9,7 +9,7 @@
     left: 0;
     background-color: #08c58c;
     display: flex;
-    justify-content: space-between;
+    justify-content:center;
     align-items: center;
     padding: 0 20px;
     box-sizing: border-box;
@@ -19,22 +19,4 @@
 
 .Menu h2{
     font-family: 'Pacifico', cursive;
-}
-
-
-.AddButton {
-    background-color: #08c58c;
-    outline: none;
-    cursor: pointer;
-    border: 0px solid #000000;
-    color: #000000;
-    font-size: 1.2em;
-    font-family: 'Roboto', sans-serif;
-    padding: 15px 15px;
-}
-
-.AddButton:hover {
-    background-color: #027a2a;
-    border: 1px solid #000000;
-    color: #ffffff;
 }

@@ -1,0 +1,19 @@
+@import url(https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap);
+
+.blogger{
+    margin-left: auto;
+    margin-right: auto;
+    width: 90%;
+}
+
+.blogger label {
+    color: darkgray;
+    font-family: 'Dancing Script';
+}
+
+.blogger img{
+    display:block;
+    margin:auto;
+    height: 20%;
+    width: 20%;
+}

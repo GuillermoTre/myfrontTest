@@ -1,6 +1,7 @@
 import classes from "./bloggers.module.css";
 import React from "react";
 import BloggersList from "../../components/Bloggers/BloggersList";
+import BloggerDetail from '../../components/Bloggers/Blogger/BloggerDetail';
 
 class Bloggers extends React.Component {
   constructor(props) {
@@ -34,12 +35,36 @@ class Bloggers extends React.Component {
         friends: ["1", "2"],
       },
     ],
+    showBloggerDetail: false,
+    showNewBlogger: false,
+    selectedId: 0
+  };
+
+  showBloggerDetail = ()=>{
+    this.setState({showBloggerDetail:true});
+  };
+
+  hideBloggerDetail = ()=>{
+    this.setState({showBloggerDetail:false});
+  };
+
+  showNewBlogger = ()=>{
+    this.setState({showNewBlogger: true});
+  };
+
+  hideNewBlogger = ()=>{
+    this.setState({showNewBlogger: false});
+  };
+
+  setBloggerId= (id)=>{
+    this.setState({selectedId:id});
   };
 
   render() {
     return (
       <div>
-        <BloggersList bloggers={this.state.bloggers} />
+        {  this.state.showBloggerDetail &&  <BloggerDetail onHide={this.hideBloggerDetail} id={this.state.selectedId} bloggers={this.state.bloggers} />}
+        <BloggersList bloggers={this.state.bloggers} onShow={this.showBloggerDetail} onSelectBlogger={this.setBloggerId} />
       </div>
     );
   }

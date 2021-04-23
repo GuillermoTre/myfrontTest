@@ -1,6 +1,7 @@
 import classes from "./bloggers.module.css";
 import React from "react";
 import BloggersList from "../../components/Bloggers/BloggersList";
+import BloggerDetail from "../../components/Bloggers/Blogger/BloggerDetail";
 
 class Bloggers extends React.Component {
   constructor(props) {
@@ -34,12 +35,64 @@ class Bloggers extends React.Component {
         friends: ["1", "2"],
       },
     ],
+    showBloggerDetail: false,
+    showNewBlogger: false,
+    selectedId: 0,
+  };
+
+  showBloggerDetail = () => {
+    this.setState({ showBloggerDetail: true });
+  };
+
+  hideBloggerDetail = () => {
+    this.setState({ showBloggerDetail: false });
+  };
+
+  showNewBlogger = () => {
+    this.setState({ showNewBlogger: true });
+  };
+
+  hideNewBlogger = () => {
+    this.setState({ showNewBlogger: false });
+  };
+
+  setBloggerId = (id) => {
+    this.setState({ selectedId: id });
+  };
+
+  addFriend = (bloggerId, friend) => {
+    const bloggerIndex = this.state.bloggers.findIndex((p) => {
+      return p.id === bloggerId;
+    });
+
+    const blogger = {
+      ...this.state.bloggers[bloggerIndex],
+    };
+
+    blogger.friends.push(friend);
+
+    const bloggers = [...this.state.bloggers];
+    bloggers[bloggerIndex] = blogger;
+
+    this.setState({ bloggers: bloggers });
   };
 
   render() {
     return (
-      <div>
-        <BloggersList bloggers={this.state.bloggers} />
+      <div className={classes.main}>
+        {this.state.showBloggerDetail && (
+          <BloggerDetail
+            onHide={this.hideBloggerDetail}
+            id={this.state.selectedId}
+            bloggers={this.state.bloggers}
+            onAddFriend={this.addFriend}
+          />
+        )}
+        <BloggersList
+          bloggers={this.state.bloggers}
+          onShow={this.showBloggerDetail}
+          onSelectBlogger={this.setBloggerId}
+        />
       </div>
     );
   }

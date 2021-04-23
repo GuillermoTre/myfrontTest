@@ -6,11 +6,15 @@ import Card from '../../UI/Card';
 const BloggersList = (props)=>{
 
     const list = props.bloggers.map((blogger)=>{
-        console.log(props.picture_url)
         return (
             <li key={blogger.id}>
                 <Card>
-                    <Blogger  name={blogger.name} website={blogger.website} image={blogger.picture_url} />
+                    <Blogger showDetail={props.onShow}
+                      name={blogger.name}
+                      website={blogger.website} 
+                      image={blogger.picture_url} 
+                      id={blogger.id} 
+                      selectId={props.onSelectBlogger} />
                 </Card>
             </li>
 

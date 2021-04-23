@@ -6,8 +6,13 @@
 }
 
 .blogger p {
+    text-align: center;
     color: darkgray;
     font-family: 'Dancing Script';
+}
+
+.blogger div{
+    width: 40%;
 }
 
 .blogger img{

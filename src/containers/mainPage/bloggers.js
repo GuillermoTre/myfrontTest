@@ -2,6 +2,7 @@ import classes from "./bloggers.module.css";
 import React from "react";
 import BloggersList from "../../components/Bloggers/BloggersList";
 import BloggerDetail from "../../components/Bloggers/Blogger/BloggerDetail";
+import NewBlogger from '../../components/Bloggers/Blogger/newBlogger';
 
 class Bloggers extends React.Component {
   constructor(props) {
@@ -48,11 +49,11 @@ class Bloggers extends React.Component {
     this.setState({ showBloggerDetail: false });
   };
 
-  showNewBlogger = () => {
+  showNewBloggerHandler = () => {
     this.setState({ showNewBlogger: true });
   };
 
-  hideNewBlogger = () => {
+  hideNewBloggerHandler = () => {
     this.setState({ showNewBlogger: false });
   };
 
@@ -77,6 +78,13 @@ class Bloggers extends React.Component {
     this.setState({ bloggers: bloggers });
   };
 
+  newBloggerHandler = (blogger)=>{
+    const bloggerList = [...this.state.bloggers];
+    bloggerList.push(blogger);
+    this.setState({bloggers:bloggerList});
+  };
+
+
   render() {
     return (
       <div className={classes.main}>
@@ -88,11 +96,18 @@ class Bloggers extends React.Component {
             onAddFriend={this.addFriend}
           />
         )}
+        {  this.state.showNewBlogger &&  
+        <NewBlogger 
+        onHide={this.hideNewBloggerHandler}
+        id={this.state.bloggers.length + 1}
+        addBlogger={this.newBloggerHandler}
+         />}
         <BloggersList
           bloggers={this.state.bloggers}
           onShow={this.showBloggerDetail}
           onSelectBlogger={this.setBloggerId}
         />
+        <button onClick={this.showNewBloggerHandler} className={classes.Button} >Add New Blogger</button>
       </div>
     );
   }

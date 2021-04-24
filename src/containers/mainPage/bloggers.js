@@ -2,7 +2,8 @@ import classes from "./bloggers.module.css";
 import React from "react";
 import BloggersList from "../../components/Bloggers/BloggersList";
 import BloggerDetail from "../../components/Bloggers/Blogger/BloggerDetail";
-import NewBlogger from '../../components/Bloggers/Blogger/newBlogger';
+import NewBlogger from "../../components/Bloggers/Blogger/newBlogger";
+import SearchBar from "../../components/searchBar/searchBar";
 
 class Bloggers extends React.Component {
   constructor(props) {
@@ -36,10 +37,15 @@ class Bloggers extends React.Component {
         friends: ["1", "2"],
       },
     ],
+    filteredBloggers: [],
     showBloggerDetail: false,
     showNewBlogger: false,
     selectedId: 0,
   };
+
+  componentDidMount() {
+    this.setState({ filteredBloggers: this.state.bloggers });
+  }
 
   showBloggerDetail = () => {
     this.setState({ showBloggerDetail: true });
@@ -78,16 +84,37 @@ class Bloggers extends React.Component {
     this.setState({ bloggers: bloggers });
   };
 
-  newBloggerHandler = (blogger)=>{
+  newBloggerHandler = (blogger) => {
     const bloggerList = [...this.state.bloggers];
     bloggerList.push(blogger);
-    this.setState({bloggers:bloggerList});
+    this.setState({ bloggers: bloggerList });
   };
 
+  filterListHandler = (type, word) => {
+    if (word === "") {
+      this.setState({ filteredBloggers: this.state.bloggers });
+      return;
+    }
+
+    if (type === "name") {
+      const bloggers = this.state.bloggers;
+
+      const filtered = bloggers.filter((item) => item.name.includes(word));
+
+      this.setState({ filteredBloggers: filtered });
+    } else {
+      const bloggers = this.state.bloggers;
+
+      const filtered = bloggers.filter((item) => item.website.includes(word));
+
+      this.setState({ filteredBloggers: filtered });
+    }
+  };
 
   render() {
     return (
       <div className={classes.main}>
+        <SearchBar className={classes.searchBar} onSearch={this.filterListHandler} />
         {this.state.showBloggerDetail && (
           <BloggerDetail
             onHide={this.hideBloggerDetail}
@@ -96,18 +123,22 @@ class Bloggers extends React.Component {
             onAddFriend={this.addFriend}
           />
         )}
-        {  this.state.showNewBlogger &&  
-        <NewBlogger 
-        onHide={this.hideNewBloggerHandler}
-        id={this.state.bloggers.length + 1}
-        addBlogger={this.newBloggerHandler}
-         />}
+        {this.state.showNewBlogger && (
+          <NewBlogger
+            onHide={this.hideNewBloggerHandler}
+            id={this.state.bloggers.length + 1}
+            addBlogger={this.newBloggerHandler}
+          />
+        )}
+
         <BloggersList
-          bloggers={this.state.bloggers}
+          bloggers={this.state.filteredBloggers}
           onShow={this.showBloggerDetail}
           onSelectBlogger={this.setBloggerId}
         />
-        <button onClick={this.showNewBloggerHandler} className={classes.Button} >Add New Blogger</button>
+        <button onClick={this.showNewBloggerHandler} className={classes.Button}>
+          Add New Blogger
+        </button>
       </div>
     );
   }

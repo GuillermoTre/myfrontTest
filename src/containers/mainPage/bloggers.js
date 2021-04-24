@@ -44,7 +44,18 @@ class Bloggers extends React.Component {
   };
 
   componentDidMount() {
-    this.setState({ filteredBloggers: this.state.bloggers });
+    const localStorageBloggers =   JSON.parse(localStorage.getItem('bloggers'));
+
+
+    if(localStorageBloggers === null){
+      this.setState({ filteredBloggers: this.state.bloggers });
+    }
+    else{
+      this.setState({filteredBloggers:localStorageBloggers });
+      this.setState({bloggers:localStorageBloggers });
+    }
+
+ 
   }
 
   showBloggerDetail = () => {
@@ -113,6 +124,11 @@ class Bloggers extends React.Component {
     }
   };
 
+  saveBloggers = ()=>{
+    localStorage.setItem('bloggers', JSON.stringify(this.state.bloggers) );
+    alert('Datos Guardados');
+  }
+
   render() {
     return (
       <div className={classes.main}>
@@ -140,6 +156,9 @@ class Bloggers extends React.Component {
         />
         <button onClick={this.showNewBloggerHandler} className={classes.Button}>
           Add New Blogger
+        </button>
+        <button onClick={this.saveBloggers} className={classes.Button}>
+          Save Bloggers
         </button>
       </div>
     );

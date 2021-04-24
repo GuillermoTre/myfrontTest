@@ -87,7 +87,9 @@ class Bloggers extends React.Component {
   newBloggerHandler = (blogger) => {
     const bloggerList = [...this.state.bloggers];
     bloggerList.push(blogger);
-    this.setState({ bloggers: bloggerList });
+
+    this.setState({ bloggers: bloggerList,filteredBloggers: bloggerList  });
+
   };
 
   filterListHandler = (type, word) => {

@@ -1,4 +1,4 @@
-# Prueba de Frontend the axetended
+# Prueba de Frontend de axetended
 
 Proyecto basado en prueba de frontend de la siguiente liga:
 https://github.com/axented/frontend-challenge/blob/main/README.md

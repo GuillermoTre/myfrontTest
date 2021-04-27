@@ -36,7 +36,7 @@ Install dependencies by running
 
 ### `npm install`
 
-run to start the project:
+Start the project by running:
 
 ### `npm start`
 

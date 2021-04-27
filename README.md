@@ -1,23 +1,46 @@
-# Prueba de Frontend de Axented
 
-Proyecto basado en prueba de frontend de la siguiente liga:
+#Front end test for Axented
+
+Project based on:
 https://github.com/axented/frontend-challenge/blob/main/README.md
 
 
-## Requerimientos
+## Requirements
 
-Instalar Node
+Install Node.
 
-## Como iniciar el proyecto
+For windows:
+download installer from  nodejs.org
 
-Primero instalar dependencias
+Arch Linux:
+pacman -S nodejs npm
+
+Ubuntu:
+curl -fsSL https://deb.nodesource.com/setup_16.x | sudo -E bash -
+sudo apt-get install -y nodejs
+
+Debian, as root:
+curl -fsSL https://deb.nodesource.com/setup_16.x | bash -
+apt-get install -y nodejs
+
+Gentoo:
+emerge nodejs
+
+Mac:
+brew update
+brew install node
+
+## How to start
+
+Install dependencies by running
 
 ### `npm install`
 
-Para inciar el proyecto:
+run to start the project:
 
 ### `npm start`
 
 Runs the app in the development mode.\
-Abrir [http://localhost:3000](http://localhost:3000) en el browser.
+Open [http://localhost:3000](http://localhost:3000) in your  browser.
+
 

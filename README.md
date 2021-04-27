@@ -36,11 +36,11 @@ Install dependencies by running
 
 ### `npm install`
 
-Start the project by running:
+Execute:
 
 ### `npm start`
 
-Runs the app in the development mode.\
+The app will run in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) in your  browser.
 
 
